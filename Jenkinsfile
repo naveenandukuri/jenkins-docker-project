@@ -13,5 +13,18 @@ sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:v1.$BUILD_I
 sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:latest'
 }
 }
+stage("docker push"){
+steps{
+
+}
+}
+stage("docker push"){
+withCredentials([string(credentialsId: 'Dockerpassword', variable: 'Dockerpassword')]) {
+sh "docker login -u naveenandukuri -p ${Dockerpassword}"
+sh 'docker image push $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:latest'
+sh 'docker image push $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:v1.$BUILD_ID'
+sh "docker rmi `docker images -q`"
+}
+}
 }
 }
