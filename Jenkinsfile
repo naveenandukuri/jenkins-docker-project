@@ -26,7 +26,7 @@ sh "docker rmi -f `docker images -q`"
 stage("container creation"){
 steps{
 sshagent(['ubuntu']) {
- sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.58.99.208 docker run -d -p 9000:80 --name deployment naveenandukuri/$JOB_NAME:latest'
+ sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.45.211 docker run -d -p 9000:80 --name deployment naveenandukuri/$JOB_NAME:latest'
 }
 }
 }
