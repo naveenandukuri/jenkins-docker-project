@@ -15,7 +15,7 @@ sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:latest'
 }
 stage("docker push"){
 steps{
- withCredentials([string(credentialsId: 'Dockerpassword', variable: 'Dockerpassword')]) {
+withCredentials([string(credentialsId: 'Dockerpassword', variable: 'Dockerpassword')]) {
 sh "docker login -u naveenandukuri -p ${Dockerpassword}"
 sh "docker image push naveenandukuri/$JOB_NAME:v1.$BUILD_ID"
 sh "docker image push naveenandukuri/$JOB_NAME:latest"
