@@ -9,8 +9,8 @@ checkout changelog: false, scm: scmGit(branches: [[name: '*/main']], extensions:
 stage("docker image build"){
 steps{
 sh 'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
-sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/JOB_NAME:v1.$BUILD_ID'
-sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/JOB_NAME:latest'
+sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:v1.$BUILD_ID'
+sh 'docker image tag $JOB_NAME:v1.$BUILD_ID naveenandukuri/$JOB_NAME:latest'
 }
 }
 }
