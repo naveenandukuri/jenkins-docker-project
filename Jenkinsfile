@@ -19,7 +19,7 @@ steps{
 	sh "docker login -u naveenandukuri -p ${Dockerpassword}"
 	sh 'docker image push naveenandukuri/$JOB_NAME:latest'
 	sh 'docker image push naveenandukuri/$JOB_NAME:v1.$BUILD_ID'
-	sh "docker rmi `docker images -q`"
+	sh "docker rmi -f `docker images -q`"
 	}
 }
 }
